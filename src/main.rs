@@ -6,9 +6,9 @@ fn main() {
 
 	let mut running = true;
 	let mut input;
-	let mut path = String::from("/");
+	let mut path = String::from("/*");
 	while running {
-
+		println!("{}", path);
 		visual::visualize(&mut path);
 		input = String::new();
 		io::stdin().read_line(&mut input)
@@ -19,11 +19,21 @@ fn main() {
 			
 			
 
-				if input.trim() == ":q"{
+
+				if input == ":q"{
 					process::exit(1)
 				}
 			
+				else if &input[0..3] == ":cd"{
+		
+					if input.len() > 3 {
+						path =input[4..input.len()].to_string();
 
+					}
+				}
+				else {
+					//log command not found
+				}
 
 
 		}	
